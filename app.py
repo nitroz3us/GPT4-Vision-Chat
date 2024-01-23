@@ -109,6 +109,7 @@ def main():
         "Enter your API Key here",
         key="placeholder",
         type="password",
+        max_chars=51,
         help="You can find your API key at https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4",
     )
     client = OpenAI(api_key=api_key)
