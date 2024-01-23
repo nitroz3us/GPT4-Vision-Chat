@@ -129,13 +129,14 @@ def main():
     if uploaded_file is not None and submit_btn and api_key:
         st.info("Processing file...")
 
-        # Caveat: No matter the file type, it is will be processed the same way as how PDFs are processed.
-        # Saves effort and time, didn't want to create a separate function just for images only, 
-        # so just process everything like as if it's a PDF.
+        # Caveat: No matter the file type, it will be processed the same way as how PDFs are processed.
+        # Saves effort and time, didn't want to create a separate function just for images only so just process everything like as if it's a PDF.
         conversion_result = convert_pdf_to_images(uploaded_file.read(), uploaded_file.name)
 
         if "error" in conversion_result:
             st.error(conversion_result["error"])
+            # Delete files from supabase storage
+            delete_files(uploaded_file.name)
         else:
             st.success(conversion_result["success"])
             for url in conversion_result["urls"]:
@@ -182,10 +183,9 @@ def main():
                     # Final update to placeholder after the stream ends
                     message_placeholder.markdown(full_response)
                     # Finally delete files from supabase storage
-                    # delete_file_res = delete_files(uploaded_file.name)
                     delete_files(uploaded_file.name)
-                    # print(delete_file_res)
                 except Exception as e:
+                    delete_files(uploaded_file.name)
                     st.error(f"An error occurred: {e}")      
     else:
     # Warnings for user action required
