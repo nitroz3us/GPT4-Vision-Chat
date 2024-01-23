@@ -41,8 +41,8 @@ To get started with GPT4-Vision-Chat, follow these steps:
     - https://platform.openai.com/account/api-keys
     - https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4 [Accessing GPT4]
 
-## Demo
-<img width="1406" alt="Screenshot 2024-01-22 at 11 05 15 PM" src="https://github.com/nitroz3us/GPT4-Vision-Chat/assets/109442833/061ebff6-1d61-48d3-adbb-4f95e28e4d59">
+## Screenshot
+<img width="1412" alt="Screenshot 2024-01-23 at 11 52 16 PM" src="https://github.com/nitroz3us/GPT4-Vision-Chat/assets/109442833/360f9c71-b2be-46c0-a6a1-2719105ae960">
 
 
 ## Limitations
