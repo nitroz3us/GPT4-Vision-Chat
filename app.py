@@ -113,9 +113,11 @@ def main():
     client = OpenAI(api_key=api_key)
     
     uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg", "pdf"])
+    if uploaded_file is not None:
+        if uploaded_file.type == "image/png" or uploaded_file.type == "image/jpg" or uploaded_file.type == "image/jpeg":
+                    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+
     toggle_prompt = st.toggle("Toggle Prompt", value=True, help="Toggle to add your own prompt")
-
-
     if toggle_prompt:
         user_prompt = st.text_area(
             "Add your prompt here:",
@@ -140,8 +142,7 @@ def main():
             
             print("File type: ",uploaded_file.type)
 
-            if uploaded_file.type == "image/png" or uploaded_file.type == "image/jpg" or uploaded_file.type == "image/jpeg":
-                st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+            
 
             image_urls = retrieve_urls(uploaded_file.name)
 
