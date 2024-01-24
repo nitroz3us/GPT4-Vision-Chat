@@ -140,12 +140,7 @@ def main():
         else:
             st.success(conversion_result["success"])
             
-            print("File type: ",uploaded_file.type)
-
-            
-
             image_urls = retrieve_urls(uploaded_file.name)
-
             with st.spinner("Analysing the image ..."):
                 prompt_text = user_prompt
                 
