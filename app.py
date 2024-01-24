@@ -1,6 +1,4 @@
 import streamlit as st
-import openai
-import base64
 import fitz
 import os
 import string
@@ -139,8 +137,11 @@ def main():
             delete_files(uploaded_file.name)
         else:
             st.success(conversion_result["success"])
-            for url in conversion_result["urls"]:
-                st.image(url, caption="Converted Image", use_column_width=True)
+            
+            print("File type: ",uploaded_file.type)
+
+            if uploaded_file.type == "image/png" or uploaded_file.type == "image/jpg" or uploaded_file.type == "image/jpeg":
+                st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
 
             image_urls = retrieve_urls(uploaded_file.name)
 
